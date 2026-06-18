@@ -10,8 +10,8 @@ COMFY_PORT = int(os.environ.get("COMFY_PORT", "8188"))
 COMFY_BASE = f"http://{COMFY_HOST}:{COMFY_PORT}"
 COMFY_READY_TIMEOUT = int(os.environ.get("COMFY_READY_TIMEOUT", "1800"))
 
-SUPABASE_URL    = os.environ.get("SUPABASE_URL", "https://yaiygjwbtzevjpxncvzu.supabase.co")
-SUPABASE_KEY    = os.environ.get("SUPABASE_KEY", "")
+SUPABASE_URL    = os.environ.get("SUPABASE_URL", "https://zcpyipwqlssqdbyjoolb.supabase.co")
+SUPABASE_KEY    = os.environ.get("SUPABASE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpjcHlpcHdxbHNzcWRieWpvb2xiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NzgxMDg0NiwiZXhwIjoyMDkzMzg2ODQ2fQ.RCnIru-Cc4a49KFbCL6NWKm8uvahiur0zaKSiAsnsGs")
 SUPABASE_BUCKET = os.environ.get("SUPABASE_BUCKET", "videos")
 
 DEFAULT_WORKFLOW_PATH = "/workflow.json"
