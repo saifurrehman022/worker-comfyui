@@ -170,47 +170,7 @@ RUN git clone --depth 1 https://github.com/Well-Made/ComfyUI-Wan-SVI2Pro-FLF.git
 # Note: Every command runs a looped sequence of up to 5 attempts with incremental backoffs (10s -> 20s -> 30s...) 
 # to shield the image build from random Hugging Face connection drops.
 
-# --- WAN 2.1 I2V 480P MODELS (new workflow: Shot-StreamingPrompt-1028_40scenes) ---
 
-RUN BACKOFFS="10 20 30 60 90" && for i in 1 2 3 4 5; do \
-    comfy --workspace /comfyui model download \
-      --url 'https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_i2v_480p_14B_fp16.safetensors' \
-      --relative-path models/diffusion_models \
-      --filename 'wan2.1_i2v_480p_14B_fp16.safetensors' && break; \
-    if [ $i -eq 5 ]; then echo "model-download failed" >&2; exit 1; fi; \
-    SLEEP=$(echo $BACKOFFS | cut -d ' ' -f $i); sleep $SLEEP; done
-
-RUN BACKOFFS="10 20 30 60 90" && for i in 1 2 3 4 5; do \
-    comfy --workspace /comfyui model download \
-      --url 'https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors' \
-      --relative-path models/clip_vision \
-      --filename 'clip_vision_h.safetensors' && break; \
-    if [ $i -eq 5 ]; then echo "model-download failed" >&2; exit 1; fi; \
-    SLEEP=$(echo $BACKOFFS | cut -d ' ' -f $i); sleep $SLEEP; done
-
-RUN BACKOFFS="10 20 30 60 90" && for i in 1 2 3 4 5; do \
-    comfy --workspace /comfyui model download \
-      --url 'https://huggingface.co/epfl-vita/svi-model/resolve/main/version-1.0/svi-shot.safetensors' \
-      --relative-path models/loras \
-      --filename 'svi-shot.safetensors' && break; \
-    if [ $i -eq 5 ]; then echo "model-download failed" >&2; exit 1; fi; \
-    SLEEP=$(echo $BACKOFFS | cut -d ' ' -f $i); sleep $SLEEP; done
-
-RUN BACKOFFS="10 20 30 60 90" && for i in 1 2 3 4 5; do \
-    comfy --workspace /comfyui model download \
-      --url 'https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-fp8_e4m3fn.safetensors' \
-      --relative-path models/text_encoders \
-      --filename 'umt5-xxl-enc-fp8_e4m3fn.safetensors' && break; \
-    if [ $i -eq 5 ]; then echo "model-download failed" >&2; exit 1; fi; \
-    SLEEP=$(echo $BACKOFFS | cut -d ' ' -f $i); sleep $SLEEP; done
-
-RUN BACKOFFS="10 20 30 60 90" && for i in 1 2 3 4 5; do \
-    comfy --workspace /comfyui model download \
-      --url 'https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors' \
-      --relative-path models/vae \
-      --filename 'Wan2_1_VAE_bf16.safetensors' && break; \
-    if [ $i -eq 5 ]; then echo "model-download failed" >&2; exit 1; fi; \
-    SLEEP=$(echo $BACKOFFS | cut -d ' ' -f $i); sleep $SLEEP; done
 # =============================================================================
 # 8. INPUT ASSET SEEDING & ENTRYPOINT RUNTIME
 # =============================================================================
