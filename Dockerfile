@@ -107,33 +107,33 @@ RUN uv pip install \
     sageattention
 
 # KJNodes
-RUN git clone --depth 1 https://github.com/kijai/ComfyUI-KJNodes.git /comfyui/custom_nodes/ComfyUI-KJNodes && \
-    if [ -f /comfyui/custom_nodes/ComfyUI-KJNodes/requirements.txt ]; then \
-        uv pip install -r /comfyui/custom_nodes/ComfyUI-KJNodes/requirements.txt; \
+RUN git clone --depth 1 https://github.com/kijai/ComfyUI-KJNodes.git /comfyui/ComfyUI/custom_nodes/ComfyUI-KJNodes && \
+    if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-KJNodes/requirements.txt ]; then \
+        uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-KJNodes/requirements.txt; \
     fi
 
 # VideoHelperSuite
-RUN git clone --depth 1 https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git /comfyui/custom_nodes/ComfyUI-VideoHelperSuite && \
-    if [ -f /comfyui/custom_nodes/ComfyUI-VideoHelperSuite/requirements.txt ]; then \
-        uv pip install -r /comfyui/custom_nodes/ComfyUI-VideoHelperSuite/requirements.txt; \
+RUN git clone --depth 1 https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git /comfyui/ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite && \
+    if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite/requirements.txt ]; then \
+        uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite/requirements.txt; \
     fi
 
 # WanVideoWrapper
-RUN git clone --depth 1 https://github.com/kijai/ComfyUI-WanVideoWrapper.git /comfyui/custom_nodes/ComfyUI-WanVideoWrapper && \
-    if [ -f /comfyui/custom_nodes/ComfyUI-WanVideoWrapper/requirements.txt ]; then \
-        uv pip install -r /comfyui/custom_nodes/ComfyUI-WanVideoWrapper/requirements.txt; \
+RUN git clone --depth 1 https://github.com/kijai/ComfyUI-WanVideoWrapper.git /comfyui/ComfyUI/custom_nodes/ComfyUI-WanVideoWrapper && \
+    if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-WanVideoWrapper/requirements.txt ]; then \
+        uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-WanVideoWrapper/requirements.txt; \
     fi
 
 # Logic Nodes
-RUN git clone --depth 1 https://github.com/theUpsider/ComfyUI-Logic.git /comfyui/custom_nodes/ComfyUI-Logic && \
-    if [ -f /comfyui/custom_nodes/ComfyUI-Logic/requirements.txt ]; then \
-        uv pip install -r /comfyui/custom_nodes/ComfyUI-Logic/requirements.txt; \
+RUN git clone --depth 1 https://github.com/theUpsider/ComfyUI-Logic.git /comfyui/ComfyUI/custom_nodes/ComfyUI-Logic && \
+    if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-Logic/requirements.txt ]; then \
+        uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-Logic/requirements.txt; \
     fi
 
 # SVI Pro FLF
-RUN git clone --depth 1 https://github.com/Well-Made/ComfyUI-Wan-SVI2Pro-FLF.git /comfyui/custom_nodes/ComfyUI-Wan-SVI2Pro-FLF && \
-    if [ -f /comfyui/custom_nodes/ComfyUI-Wan-SVI2Pro-FLF/requirements.txt ]; then \
-        uv pip install -r /comfyui/custom_nodes/ComfyUI-Wan-SVI2Pro-FLF/requirements.txt; \
+RUN git clone --depth 1 https://github.com/Well-Made/ComfyUI-Wan-SVI2Pro-FLF.git /comfyui/ComfyUI/custom_nodes/ComfyUI-Wan-SVI2Pro-FLF && \
+    if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-Wan-SVI2Pro-FLF/requirements.txt ]; then \
+        uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-Wan-SVI2Pro-FLF/requirements.txt; \
     fi
 
 # =============================================================================
