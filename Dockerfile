@@ -104,7 +104,8 @@ RUN uv pip install \
     mss \
     onnxruntime-gpu \
     transformers \
-    sageattention
+    sageattention \
+    sympy
 
 # KJNodes
 RUN git clone --depth 1 https://github.com/kijai/ComfyUI-KJNodes.git /comfyui/ComfyUI/custom_nodes/ComfyUI-KJNodes && \
