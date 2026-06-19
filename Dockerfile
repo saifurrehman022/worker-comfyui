@@ -50,9 +50,13 @@ RUN uv pip install comfy-cli runpod requests websocket-client
 # =============================================================================
 # 4. COMFYUI & TARGET PYTORCH INSTALLATION (Robust Git Pass)
 # =============================================================================
-# Install target PyTorch 12.6 wheels via uv
-RUN uv pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126
-# Clone ComfyUI repository directly instead of using the interactive CLI installer
+# =============================================================================
+# 4. COMFYUI & TARGET BLACKWELL-COMPATIBLE PYTORCH INSTALLATION
+# =============================================================================
+# Install stable PyTorch wheels compiled for CUDA 12.8 (Blackwell Support)
+RUN uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+
+# Clone ComfyUI repository directly
 RUN git clone --depth 1 https://github.com/comfyanonymous/ComfyUI.git /comfyui/ComfyUI
 
 # Install core ComfyUI dependencies natively into our active environment
