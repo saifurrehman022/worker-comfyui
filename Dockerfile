@@ -39,25 +39,25 @@ RUN wget -qO- https://astral.sh/uv/install.sh | sh \
     && ln -s /root/.local/bin/uv /usr/local/bin/uv \
     && ln -s /root/.local/bin/uvx /usr/local/bin/uvx
 
-# Create the primary virtual environment that ComfyUI and RunPod WILL BOTH USE
+# Create the primary virtual environment that everything will run from
+RUN mkdir -p /comfyui
 RUN uv venv /comfyui/.venv
 ENV PATH="/comfyui/.venv/bin:${PATH}"
 
-# Install core infrastructure tools rapidly using uv
+# Install runner requirements
 RUN uv pip install comfy-cli runpod requests websocket-client
 
 # =============================================================================
-# 4. COMFYUI & TARGET PYTORCH INSTALLATION (Single Pass)
+# 4. COMFYUI & TARGET PYTORCH INSTALLATION (Robust Git Pass)
 # =============================================================================
-# Install target PyTorch 12.6 wheels FIRST so comfy-cli doesn't download the wrong ones
+# Install target PyTorch 12.6 wheels via uv
 RUN uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
 
-# Install ComfyUI without forcing its own python/cuda reinstall loops
-RUN if [ -n "${COMFYUI_VERSION:-}" ]; then \
-        /usr/bin/yes | comfy --workspace /comfyui install --version "${COMFYUI_VERSION}" --skip-pip; \
-    else \
-        /usr/bin/yes | comfy --workspace /comfyui install --skip-pip; \
-    fi
+# Clone ComfyUI repository directly instead of using the interactive CLI installer
+RUN git clone --depth 1 https://github.com/comfyanonymous/ComfyUI.git /comfyui/ComfyUI
+
+# Install core ComfyUI dependencies natively into our active environment
+RUN uv pip install -r /comfyui/ComfyUI/requirements.txt
 
 ENV COMFYUI_DIR=/comfyui
 WORKDIR /
