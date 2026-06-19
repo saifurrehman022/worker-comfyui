@@ -51,7 +51,7 @@ RUN uv pip install comfy-cli runpod requests websocket-client
 # 4. COMFYUI & TARGET PYTORCH INSTALLATION (Robust Git Pass)
 # =============================================================================
 # Install target PyTorch 12.6 wheels via uv
-RUN uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+RUN uv pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
 
 # Clone ComfyUI repository directly instead of using the interactive CLI installer
 RUN git clone --depth 1 https://github.com/comfyanonymous/ComfyUI.git /comfyui/ComfyUI
