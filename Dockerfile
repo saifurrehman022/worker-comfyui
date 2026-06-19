@@ -1,7 +1,10 @@
 
 ARG BASE_IMAGE=nvidia/cuda:12.6.3-cudnn-runtime-ubuntu24.04
 FROM ${BASE_IMAGE} AS base
-
+# Ensure PyTorch is installed in ComfyUI's own venv
+RUN /comfyui/.venv/bin/python -m pip install --upgrade pip && \
+    /comfyui/.venv/bin/python -m pip install torch torchvision torchaudio \
+    --index-url https://download.pytorch.org/whl/cu126
 # Define build-time  --build-arg during build)
 ARG COMFYUI_VERSION=
 ARG CUDA_VERSION_FOR_COMFY
