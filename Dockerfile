@@ -106,48 +106,46 @@ RUN uv pip install \
     transformers \
     sageattention \
     sympy
-# ComfyUI-Custom-Scripts (SimpleMath+ and other utility nodes)
+
+# ComfyUI Essentials — provides SimpleMath+ node (NOT Impact-Pack)
+RUN git clone --depth 1 https://github.com/cubiq/ComfyUI_essentials.git /comfyui/ComfyUI/custom_nodes/ComfyUI_essentials && \
+    if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI_essentials/requirements.txt ]; then \
+        uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI_essentials/requirements.txt; \
+    fi
+ 
+# ComfyUI Custom Scripts
 RUN git clone --depth 1 https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git /comfyui/ComfyUI/custom_nodes/ComfyUI-Custom-Scripts
-# ComfyUI-Impact-Pack (provides SimpleMath+ node)
-RUN git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Impact-Pack.git /comfyui/ComfyUI/custom_nodes/ComfyUI-Impact-Pack && \
-    if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-Impact-Pack/requirements.txt ]; then \
-        uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-Impact-Pack/requirements.txt; \
-    fi
-# ComfyUI-Impact-Subpack (also provides SimpleMath+)  
-RUN git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Impact-Subpack.git /comfyui/ComfyUI/custom_nodes/ComfyUI-Impact-Subpack && \
-    if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-Impact-Subpack/requirements.txt ]; then \
-        uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-Impact-Subpack/requirements.txt; \
-    fi
+ 
 # KJNodes
 RUN git clone --depth 1 https://github.com/kijai/ComfyUI-KJNodes.git /comfyui/ComfyUI/custom_nodes/ComfyUI-KJNodes && \
     if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-KJNodes/requirements.txt ]; then \
         uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-KJNodes/requirements.txt; \
     fi
-
+ 
 # VideoHelperSuite
 RUN git clone --depth 1 https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git /comfyui/ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite && \
     if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite/requirements.txt ]; then \
         uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite/requirements.txt; \
     fi
-
+ 
 # WanVideoWrapper
 RUN git clone --depth 1 https://github.com/kijai/ComfyUI-WanVideoWrapper.git /comfyui/ComfyUI/custom_nodes/ComfyUI-WanVideoWrapper && \
     if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-WanVideoWrapper/requirements.txt ]; then \
         uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-WanVideoWrapper/requirements.txt; \
     fi
-
+ 
 # Logic Nodes
 RUN git clone --depth 1 https://github.com/theUpsider/ComfyUI-Logic.git /comfyui/ComfyUI/custom_nodes/ComfyUI-Logic && \
     if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-Logic/requirements.txt ]; then \
         uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-Logic/requirements.txt; \
     fi
-
+ 
 # SVI Pro FLF
 RUN git clone --depth 1 https://github.com/Well-Made/ComfyUI-Wan-SVI2Pro-FLF.git /comfyui/ComfyUI/custom_nodes/ComfyUI-Wan-SVI2Pro-FLF && \
     if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-Wan-SVI2Pro-FLF/requirements.txt ]; then \
         uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-Wan-SVI2Pro-FLF/requirements.txt; \
     fi
-
+ 
 # =============================================================================
 # 8. INPUT ASSETS
 # =============================================================================
