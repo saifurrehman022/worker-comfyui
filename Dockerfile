@@ -108,7 +108,11 @@ RUN uv pip install \
     sympy
 # ComfyUI-Custom-Scripts (SimpleMath+ and other utility nodes)
 RUN git clone --depth 1 https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git /comfyui/ComfyUI/custom_nodes/ComfyUI-Custom-Scripts
-
+# ComfyUI-Impact-Pack (provides SimpleMath+ node)
+RUN git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Impact-Pack.git /comfyui/ComfyUI/custom_nodes/ComfyUI-Impact-Pack && \
+    if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-Impact-Pack/requirements.txt ]; then \
+        uv pip install -r /comfyui/ComfyUI/custom_nodes/ComfyUI-Impact-Pack/requirements.txt; \
+    fi
 # ComfyUI-Impact-Subpack (also provides SimpleMath+)  
 RUN git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Impact-Subpack.git /comfyui/ComfyUI/custom_nodes/ComfyUI-Impact-Subpack && \
     if [ -f /comfyui/ComfyUI/custom_nodes/ComfyUI-Impact-Subpack/requirements.txt ]; then \
